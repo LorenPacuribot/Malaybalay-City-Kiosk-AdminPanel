@@ -13,10 +13,11 @@ Route::get('/login', function () {
     return redirect('/admin/login');
 })->name('login');
 
-// Route::get('/print', function () {
-//     return view('print');
-// });
+Route::get('/service', function () {
+    return view('/service');
+});
 
-Route::get('generate-pdf', [PdfController::class, 'generatePdf'])->name('generate-pdf');
+Route::get('/office', function () {
+    return view('/office');
+});
 
-Route::match(['get', 'post'], '/bulk-print', [BulkPrintController::class, 'print'])->name('bulk.print');
