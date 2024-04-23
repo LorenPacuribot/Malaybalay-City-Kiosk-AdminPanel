@@ -6,11 +6,18 @@
     <title>Printable Form</title>
     <style>
         body {
-          /* background-image: url('images/background-image-service.jpg'); Replace 'images/background-image-service.jpg' with the correct path to your image */
-          background-size: cover;
-          background-repeat: no-repeat;
-          font-family: Arial;
-          padding: 25px; Add padding to prevent content from touching the edges
+            background-image: url('images/brr.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            padding: 50px; /* Add padding to prevent content from touching the edges */
+            line-height: 1;
+            counter-reset: page;
+            position: relative; /* Make the body relative for absolute positioning */
+        }
+        @page {
+            size: landscape; /* Set the page orientation to landscape */
+            margin: 0; /* Remove default margins */
         }
 
         table {
@@ -19,41 +26,13 @@
             table-layout: auto; /* Distribute table columns evenly */
         }
 
-
-        /* Landscape orientation */
-@media print and (orientation: landscape) {
-    @page {
-        size: landscape;
-        margin: 0; /* Set margin to 0 */
-    }
-
-    body {
-        /* background-size: auto 100%; */
-         /* background-size:  297mm 210mm; */
-         background-size: 355.6mm 215.9mm;
-    }
-}
-
-/* Portrait orientation
-@media print and (orientation: portrait) {
-    @page {
-        size: portrait;
-        margin: 0;
-    }
-    body {
-        background-size: 215.9mm 355.6mm;
-    }
-}*/
-
-
-
         table {
           border-collapse: collapse;
           width: 100%;
         }
 
         h2, h4 {
-          font-family: Arial;
+          font-family: Arial, sans-serif;
           text-align: center;
         }
 
@@ -65,40 +44,32 @@
             margin-right: 10px; /* Add some spacing between the logo and text */
         }
 
-        td, th {
-          border: 1px solid #9596a7;
+        td {
+          border: 1px solid #000000;
           text-align: left;
           padding: 8px;
           background-color: transparent; /* Make table cells transparent */
+          font-size: 13px;
+        }
+
+        th {
+            border: 1px solid #000000;
+            text-align: left;
+            padding: 8px;
+           /* background-color: transparent;  Make table cells transparent */
+            background-color: #00b0f0; /* Make table cells transparent */
+            white-space: nowrap; /* Ensure table headings remain in one line */
+            font-size: 14px;
         }
 
         tr:nth-child(even) {
           background-color: transparent;
         }
-
-        @media print {
-    /* Set margins to zero */
-    @page {
-        margin: 0;
-    }
-
-    /* Add page numbers */
-    @page :first {
-        margin-top: 0; /* Remove top margin for the first page */
-    }
-
-    @page {
-        margin: 25mm; /* Set margins to ensure content area doesn't overlap with page numbers */
-        @bottom-left {
-            content: counter(page);
-            color: black; /* Font color for page numbers */
-        }
-    }
-}
-
     </style>
+
 </head>
 <body>
+
     <h2>List of Offices</h2>
 
     <table>
@@ -121,5 +92,6 @@
             @endforeach
         </tbody>
     </table>
+
 </body>
 </html>

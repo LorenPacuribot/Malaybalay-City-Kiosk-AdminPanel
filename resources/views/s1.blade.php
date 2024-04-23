@@ -137,10 +137,10 @@
 <!-- Logo -->
 {{-- <img src="images/citylogo.png" alt="Logo" class="logo"> --}}
 
-@foreach($services as $service)
+
 <img src="images/city.png" alt="Logo" class="logo">
-    <h2>{{ $office->name }}</h2>
-    <h4>{{ $office->office_hour }}</h4>
+<h2>{{ $service->office->name }}</h2>
+<h4>{{ $service->office->office_hour }}</h4>
     <h4>except on holidays</h4>
     <br>
     <br>
@@ -234,8 +234,7 @@
     <hr>
     <h3 class="footer"></h3>
     <h3>MALAYBALAY CITY CITIZEN’S CHARTER</h3>
-    <div style="page-break-before: always;"></div>
-@endforeach
+
 
 </div>
 </body>

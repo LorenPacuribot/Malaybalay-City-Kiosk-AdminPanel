@@ -134,6 +134,9 @@ class ServiceResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\PrintAction::make()
+                ->url(fn ($record) => route('download.service', $record->getKey()))
+                ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

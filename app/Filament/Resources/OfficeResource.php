@@ -103,6 +103,10 @@ class OfficeResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\PrintAction::make()
+                ->url(fn ($record) => route('download.office', $record->getKey()))
+                ->openUrlInNewTab(),
+
 
             ])
             ->bulkActions([
@@ -110,18 +114,11 @@ class OfficeResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                     Tables\Actions\ForceDeleteBulkAction::make(),
                     Tables\Actions\RestoreBulkAction::make(),
-                   ])
-            ]);
+
+
+                    ])
+                ]);
     }
-
-    protected function handleBulkPrint($records)
-{
-    // Generate PDF for selected offices
-    $pdf = PDF::loadView('bulk-print', ['offices' => $records]);
-
-    // Download or display the PDF
-    return $pdf->download('offices.pdf');
-}
 
     public static function getRelations(): array
     {
