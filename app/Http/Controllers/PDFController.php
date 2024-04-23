@@ -40,7 +40,7 @@ class PDFController extends Controller
         'office' => $office, // Pass the single office instead of all offices
     ];
 
-    $pdf = PDF::loadView('o1', $data);
+    $pdf = PDF::loadView('specificOffice', $data);
     return $pdf->stream('office_' . $id . '.pdf');
 }
 

@@ -28,7 +28,7 @@ class PrintServicesController extends Controller
         $data = [
             'date' => date('m/d/Y'),
             'office' => $office,
-            'service' => $service,
+            'services' => $service,
 
         ];
 
@@ -54,7 +54,7 @@ class PrintServicesController extends Controller
         ];
 
         // Load the PDF view with the provided data
-        $pdf = PDF::loadView('s1', $data);
+        $pdf = PDF::loadView('specificService', $data);
 
         // Set paper size and orientation
         $pdf->setPaper('Legal', 'landscape');
