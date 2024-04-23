@@ -13,7 +13,7 @@ class Office extends Model
 {
     use HasFactory;
     use SoftDeletes;
-   
+
 
     protected $table = 'offices';
     protected $fillable = [
@@ -28,7 +28,7 @@ class Office extends Model
         return $this->hasMany(Service::class);
     }
 
-    public function locations(): BelongsTo
+    public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
     }
@@ -38,4 +38,15 @@ class Office extends Model
     //     return $this->hasMany(Location::class);
     // }
 
+    // Accessor to retrieve the name of the location
+    public function getLocationNameAttribute()
+    {
+        // Check if the location relationship is loaded
+        if ($this->relationLoaded('location')) {
+            return $this->location->name;
+        } else {
+            // If not loaded, retrieve the location using lazy loading
+            return $this->location()->value('name');
+        }
+    }
 }

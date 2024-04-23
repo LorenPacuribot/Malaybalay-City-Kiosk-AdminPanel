@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\BulkPrintController;
 
 
@@ -20,4 +21,8 @@ Route::get('/service', function () {
 Route::get('/office', function () {
     return view('/office');
 });
+
+Route::get('/download',[PDFController::class,'downloadpdf'])->name('download.offices');
+
+
 

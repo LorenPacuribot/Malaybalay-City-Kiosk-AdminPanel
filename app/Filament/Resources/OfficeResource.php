@@ -75,24 +75,15 @@ class OfficeResource extends Resource
                     ->color(fn (string $state): string => match ($state) {
                         default => 'primary',
                     }),
-                    // Tables\Columns\TextColumn::make('location_id')
-                    // ->label('Location')
-                    // ->getStateUsing(function ($record) {
-                    //     $location = Location::find($record->location_id);
-                    //     return $location ? $location->name : null;
-                    // })
-                    // ->sortable()
-                    // ->searchable()
-                    // ->badge()
-                    // ->color(fn (string $state): string => match ($state) {
-                    //     default => 'primary',
-                    // }),
-
-                // Tables\Columns\TextColumn::make('office_hour')
-                //     ->searchable(),
-                // Tables\Columns\TextColumn::make('contact_information')
-                //     ->numeric()
-                //     ->sortable(),
+                Tables\Columns\TextColumn::make('office_hour')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('contact_information')
+                    ->numeric()
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -112,23 +103,13 @@ class OfficeResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
-                // Tables\Actions\Action::make('pdf')
-                //     ->label('PDF')
-                //     ->color('success')
-                //     ->icon('heroicon-o-printer')
-                //     ->url(fn (Office $record) => route('generate-pdf', $record))
-                //     ->openUrlInNewTab(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                     Tables\Actions\ForceDeleteBulkAction::make(),
                     Tables\Actions\RestoreBulkAction::make(),
-                    BulkPrintAction::make('pdf')
-                    ->label('PDF')
-                    ->color('success')
-                    ->icon('heroicon-o-printer')
-                   // ->confirm(fn ($records) => 'Are you sure you want to print ' . count($records) . ' offices?'),
                    ])
             ]);
     }

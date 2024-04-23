@@ -6,7 +6,7 @@
     <title>Printable Form</title>
     <style>
         body {
-          background-image: url('images/background-image-service.jpg'); /* Replace 'images/background-image-service.jpg' with the correct path to your image */
+          /* background-image: url('images/background-image-service.jpg'); Replace 'images/background-image-service.jpg' with the correct path to your image */
           background-size: cover;
           background-repeat: no-repeat;
           font-family: Arial;
@@ -34,33 +34,17 @@
     }
 }
 
-/* Portrait orientation */
+/* Portrait orientation
 @media print and (orientation: portrait) {
     @page {
         size: portrait;
-        margin: 0; /* Set margin to 0 */
+        margin: 0;
     }
-
     body {
-        /* background-size: auto 100%; */
-        /* background-size: 210mm 297mm; */
         background-size: 215.9mm 355.6mm;
     }
-}
+}*/
 
-/* Add page numbers */
-/* Add page numbers */
-@page {
-    margin: 25mm; /* Set margins to ensure content area doesn't overlap with page numbers */
-    @bottom-left {
-        content: counter(page);
-        color: black; /* Font color for page numbers */
-    }
-}
-
-@page :first {
-    margin-top: 0; /* Remove top margin for the first page */
-}
 
 
         table {
@@ -91,25 +75,51 @@
         tr:nth-child(even) {
           background-color: transparent;
         }
+
+        @media print {
+    /* Set margins to zero */
+    @page {
+        margin: 0;
+    }
+
+    /* Add page numbers */
+    @page :first {
+        margin-top: 0; /* Remove top margin for the first page */
+    }
+
+    @page {
+        margin: 25mm; /* Set margins to ensure content area doesn't overlap with page numbers */
+        @bottom-left {
+            content: counter(page);
+            color: black; /* Font color for page numbers */
+        }
+    }
+}
+
     </style>
 </head>
 <body>
-<!-- Logo -->
-{{-- <img src="images/citylogo.png" alt="Logo" class="logo"> --}}
+    <h2>List of Offices</h2>
 
-<h2>List of Offices</h2>
-
-<table>
-  <tr>
-    <th>Office</th>
-    <th>Address</th>
-    <th>Contact information</th>
-</tr>
-<tr>
-    <td>Office text </td>
-    <td>Address text </td>
-    <td>Contact information text</td>
-  </tr>
-</table>
+    <table>
+        <thead>
+            <tr>
+                <th>Office Name</th>
+                <th>Location</th>
+                <th>Office Hour</th>
+                <th>Contact Information</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($offices as $office)
+                <tr>
+                    <td>{{ $office->name }}</td>
+                    <td>{{ $office->location_name }}</td> <!-- Check if location exists -->
+                    <td>{{ $office->office_hour }}</td>
+                    <td>{{ $office->contact_information }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 </html>

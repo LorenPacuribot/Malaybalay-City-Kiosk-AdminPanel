@@ -74,15 +74,15 @@ class LocationResource extends Resource
                     }),
                 Tables\Columns\TextColumn::make('floor')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('x')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('y')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('z')
-                    ->numeric()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('x')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('y')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('z')
+                //     ->numeric()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

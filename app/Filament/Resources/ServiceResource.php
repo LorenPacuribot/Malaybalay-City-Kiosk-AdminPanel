@@ -85,21 +85,36 @@ class ServiceResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Service Name')
-                    ->searchable(),
-                // Tables\Columns\TextColumn::make('office_and_division')
-                //     ->searchable(),
-                // Tables\Columns\TextColumn::make('classification')
-                //     ->searchable(),
-                // Tables\Columns\TextColumn::make('type_of_transaction')
-                //     ->searchable(),
-                // Tables\Columns\TextColumn::make('who_may_avail')
-                //     ->searchable(),
-                // Tables\Columns\TextColumn::make('total_processing_time')
-                //     ->searchable(),
-                // Tables\Columns\TextColumn::make('total_fees')
-                //     ->searchable(),
-                // Tables\Columns\TextColumn::make('period_of_extension')
-                //     ->searchable(),
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('office_and_division')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('classification')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('type_of_transaction')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('who_may_avail')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('total_processing_time')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('total_fees')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('period_of_extension')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 // Tables\Columns\TextColumn::make('created_at')
                 //     ->dateTime()
                 //     ->sortable()

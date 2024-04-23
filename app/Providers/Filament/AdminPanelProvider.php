@@ -38,8 +38,9 @@ class AdminPanelProvider extends PanelProvider
                 'warning' => Color::Orange,
             ])
             ->navigationGroups([
+                'INFORMATION MANAGEMENT',
                 'SYSTEM MANAGEMENT',
-                'INFORMATION MANAGEMENT'
+
             ])
             ->font('Poppins')
             ->brandName('Malaybalay City Hall')
