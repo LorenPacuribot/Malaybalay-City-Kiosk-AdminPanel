@@ -6,6 +6,7 @@ export default defineConfig({
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: [
+
                 ...refreshPaths,
                 'app/Filament/**',
                 'app/Forms/Components/**',
@@ -13,6 +14,10 @@ export default defineConfig({
                 'app/Infolists/Components/**',
                 'app/Providers/Filament/**',
                 'app/Tables/Columns/**',
+                'resources/routes/**',
+                'routes/**',
+                'resources/views/**',
+                
             ],
         }),
     ],

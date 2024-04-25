@@ -1,0 +1,385 @@
+.logo {
+    height: 90px; /* Set the height to match the font size of h2 and h4 */
+    position: fixed; /* Position the logo absolutely */
+    top: 20px; /* Align the logo to the top of the screen */
+    left: 50px; /* Align the logo to the left of the screen */
+    padding: 15px; /* Adjust padding as needed */
+}
+.logo:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+.watermark {
+    height: 80px; /* Set the height to match the font size of h2 and h4 */
+    position: absolute; /* Position the logo absolutely */
+    top: 500px; /* Align the logo to the top of the screen */
+    left: 2px; /* Align the logo to the left of the screen */
+    padding: 15px; /* Adjust padding as needed */
+    position: fixed;
+}
+
+
+.center {
+    position: absolute;
+    top: 300px;
+    left: 1200px;
+    transform: translate(-50%, -50%);
+}
+
+.center2 {
+    position: absolute;
+    top: 1000px;
+    left: 50px;
+    transform: translate(-50%, -50%);
+}
+
+.floor-1 {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1440px; /* Set width to 1440 pixels */
+    height: 1024px; /* Set height to 1024 pixels */
+    box-sizing: border-box;
+
+}
+
+.floor-1 .hallway {
+    position: absolute;
+    left: 71px;
+    top: 390px; /* Adjusted to match the hallway's top position */
+    width: 621.96px;
+    height: 260px;
+}
+
+
+.floor-1 .room-1 {
+    position: absolute;
+    left: 158px;
+    top: 529px;
+    width: 85.6px;
+    height: 131.86px;
+    transform-origin: top left; /* Set the origin of rotation */
+    transform: rotate(180deg);
+}
+
+.floor-1 .room-1:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+
+/* Room 2 */
+.floor-1 .room-2 {
+    position: absolute;
+    left: 173.83px;
+    top: 403px;
+    width: 98.38px;
+    height: 131.86;
+}
+
+.floor-1 .room-2:hover {
+    filter: grayscale(100%) invert(100%) brightness(20%);
+}
+
+/* Stair 1 */
+.floor-1 .stairs-1 {
+    position: absolute;
+    left: 272.21px;
+    top: 486px;
+    width: 51.69px;
+    height: 37.76px;
+}
+
+/* Stair 2 */
+.floor-1 .stairs-2 {
+    position: absolute;
+    left: 440.62px;
+    top:  487px;
+    width: 51.69px;
+    height: 37.76px;
+}
+
+/* Room 3 */
+.floor-1 .room-3 {
+    position: absolute;
+    left: 492.31px;
+    top: 397px;
+    width: 95.04px;
+    height: 131.86px;
+}
+
+.floor-1 .room-3:hover {
+    filter: grayscale(100%) invert(100%) brightness(20%);
+}
+
+/* Room 4 */
+.floor-1 .room-4 {
+    position: absolute;
+    left: 601.8px;
+    top: 397px;
+    width: 91.15px;
+    height: 131.86px;
+}
+
+.floor-1 .room-4:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+/* Room 5 */
+.floor-1 .room-5 {
+    position: absolute;
+    left: 71px;
+    top: 546px;
+    width: 51.69px;
+    height: 64.38px;
+}
+
+.floor-1 .room-5:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+
+/* Room 6 */
+.floor-1 .room-6 {
+    position: absolute;
+    left: 122.69px;
+    top: 545px;
+    width: 149.51px;
+    height: 87.29px;
+}
+
+.floor-1 .room-6:hover {
+    filter: grayscale(100%) invert(100%) brightness(20%);
+}
+
+/* Stair 3 */
+.floor-1 .stairs-3 {
+    position: absolute;
+    left: 272.21px;
+    top: 547.9px;
+    width: 51.69px;
+    height: 28.48px;
+}
+
+/* Stair 4 */
+.floor-1 .stairs-4 {
+    position: absolute;
+    left: 440.62px;
+    top: 550px;
+    width: 51.69px;
+    height: 28.48px;
+}
+
+/* Room 7 */
+.floor-1 .room-7 {
+    position: absolute;
+    left: 492.3px;
+    top: 547px;
+    width: 143.99px;
+    height: 86.67px;
+    transform-origin: top left; /* Set the origin of rotation */
+    transform: rotate(0deg);
+}
+
+.floor-1 .room-7:hover {
+    filter: grayscale(100%) invert(100%) brightness(20%);
+}
+
+/* Room 8 */
+.floor-1 .room-8 {
+    position: absolute;
+    left: 636.26px;
+    top: 547.9px;
+    width: 56.69px;
+    height: 64.38px;
+}
+.floor-1 .room-8:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+
+
+.floor-2 {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1440px; /* Set width to 1440 pixels */
+    height: 1024px; /* Set height to 1024 pixels */
+    box-sizing: border-box;
+}
+
+.floor-2 .hallway2 {
+    position: absolute;
+    left: 755px;
+    top: 390px; /* Adjusted to match the hallway's top position */
+    width: 622px;
+    height: 258px;
+}
+
+/* Room 1 */
+.floor-2 .room-9 {
+    position: absolute;
+    left: 845.05px;
+    top: 491px;
+    width: 90.05px;
+    height: 92.32px;
+    transform-origin: top left; /* Set the origin of rotation */
+    transform: rotate(180deg);
+}
+
+.floor-2 .room-9:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+
+/* Room 2 */
+.floor-2 .room-10 {
+    position: absolute;
+    left: 755px;
+    top: 484px;
+    width: 90.05px;
+    height: 47.69px;
+}
+
+.floor-2 .room-10:hover {
+    filter: grayscale(100%) invert(100%) brightness(20%);
+}
+
+/* Stair 1 */
+.floor-2 .stairs-5 {
+    position: absolute;
+    left: 954px;
+    top: 543.5px;
+    width: 51.69px;
+    height: 35.46px;
+}
+
+/* Stair 2 */
+.floor-2 .stairs-6 {
+    position: absolute;
+    left: 1122.98px;
+    top: 543.5px;
+    width: 51.69px;
+    height: 35.46px;
+}
+
+/* Room 3 */
+.floor-2 .room-11 {
+    position: absolute;
+    left: 858.94px;
+    top: 396px;
+    width: 65.59px;
+    height: 140px;
+}
+
+.floor-2 .room-11:hover {
+    filter: grayscale(100%) invert(100%) brightness(20%);
+}
+
+/* Room 4 */
+.floor-2 .room-12 {
+    position: absolute;
+    left: 924.54px;
+    top: 393px;
+    width: 53.92px;
+    height: 147px;
+}
+
+.floor-2 .room-12:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+/* Room 5 */
+.floor-2 .room-13 {
+    position: absolute;
+    left: 978px;
+    top: 430px;
+    width: 144.55px;
+    height: 103.93px;
+}
+
+.floor-2 .room-13:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+
+/* Room 6 */
+.floor-2 .room-14 {
+    position: absolute;
+    left: 1122.6px;
+    top: 398px;
+    width: 148.46px;
+    height: 134.5px;
+}
+
+.floor-2 .room-14:hover {
+    filter: grayscale(100%) invert(100%) brightness(20%);
+}
+
+
+/* Room 7 */
+.floor-2 .room-15 {
+    position: absolute;
+    left: 1285.84px;
+    top: 399px;
+    width: 91.16px;
+    height: 70.92px;
+
+}
+
+.floor-2 .room-15:hover {
+    filter: grayscale(100%) invert(100%) brightness(20%);
+}
+
+/* Room 8 */
+.floor-2 .room-16 {
+    position: absolute;
+    left: 1285.84px;
+    top: 463.5px;
+    width: 91.16px;
+    height: 63.58px;
+}
+.floor-2 .room-16:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+
+.floor-2 .room-17 {
+    position: absolute;
+    left: 755px;
+    top: 542px;
+    width: 48.92px;
+    height: 70.92px;
+}
+.floor-2 .room-17:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+
+.floor-2 .room-18 {
+    position: absolute;
+    left: 803.92px;
+    top: 541.5px;
+    width: 150.08px;
+    height: 92.93px;
+}
+.floor-2 .room-18:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+
+.floor-2 .room-19 {
+    position: absolute;
+    left: 1174.5px;
+    top: 541px;
+    width: 143.97px;
+    height: 92.93px;
+     transform-origin: top left;
+    transform: rotate(0deg);
+}
+.floor-2 .room-19:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+
+
+.floor-2 .room-20 {
+    position: absolute;
+    left: 1318.64px;
+    top: 542px;
+    width: 58.36px;
+    height: 70.92px;
+}
+.floor-2 .room-20:hover {
+    filter: grayscale(100%) invert(100%) brightness(10%);
+}
+
