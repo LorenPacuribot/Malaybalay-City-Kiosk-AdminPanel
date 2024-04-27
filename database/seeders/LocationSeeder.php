@@ -167,6 +167,36 @@ class LocationSeeder extends Seeder
                     'created_at' => now(),
                     'updated_at' => now(),
             ],
+
+            [
+                'name' => 'Room 18',
+                    'floor' => 2,
+                    'x' => 0,
+                    'y' => 0,
+                    'z' => 0,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+            ],
+
+            [
+                'name' => 'Room 19',
+                    'floor' => 2,
+                    'x' => 0,
+                    'y' => 0,
+                    'z' => 0,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+            ],
+
+            [
+                'name' => 'Room 20',
+                    'floor' => 2,
+                    'x' => 0,
+                    'y' => 0,
+                    'z' => 0,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+            ],
             [
                 'name' => 'Market Side, Barangay 9, Malaybalay City',
                     'floor' => 'Not located at City Hall',

@@ -25,7 +25,7 @@ Route::get('/office', function () {
 });
 
 Route::get('/swap', function () {
-    return view('/swapfloor1');
+    return view('/swapcopy');
 });
 
 // Route::get('/service/download', function () {
@@ -38,5 +38,8 @@ Route::get('/offices/download/{id}',[PDFController::class,'downloadoffice'])->na
 Route::get('/services/download',[PrintServicesController::class,'downloadpdf'])->name('download.services');
 Route::get('/services/download/{id}',[PrintServicesController::class,'downloadservice'])->name('download.service');
 
-Route::get('/admin/room-exchange/floor',[RoomExchangeController::class,'swap'])->name('swap.offices');
+Route::get('/offices/swap', [RoomExchangeController::class, 'showRooms'])->name('swap.offices');
+
+
+
 

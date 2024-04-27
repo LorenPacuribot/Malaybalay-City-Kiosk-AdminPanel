@@ -50,3 +50,4 @@ class Office extends Model
         }
     }
 }
+ 

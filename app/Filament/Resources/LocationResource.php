@@ -67,13 +67,15 @@ class LocationResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label('Room Name')
+                    ->sortable()
                     ->searchable()
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         default => 'primary',
                     }),
                 Tables\Columns\TextColumn::make('floor')
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 // Tables\Columns\TextColumn::make('x')
                 //     ->numeric()
                 //     ->sortable(),
