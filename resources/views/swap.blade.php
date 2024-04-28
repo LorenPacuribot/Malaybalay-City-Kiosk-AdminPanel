@@ -47,25 +47,17 @@
         <div class="text-f1">
             <p> CLICK THE ROOM YOU WANT TO CHANGE OFFICES</p>
             @foreach($offices as $office)
-            @foreach($offices as $office)
-    <div id="content-1{{ $office->location_id }}" class="hidden content">
-        <div class="office-info">
-            <div style="white-space: nowrap;">
-                <p style="display: inline;">Room Number:</p>
-                <h4 style="display: inline;" class="office-name" data-location-id="{{ $office->location_id }}">{{ $office->name }}</h4>
+            <div id="content-1{{ $office->location_id }}" class="hidden content">
+                <div style="white-space: nowrap;">
+                    <p style="display: inline;">Room Number:</p>
+                    <h4 style="display: inline;">{{ $office->location_id }}</h4>
+                </div>
+                <div style="white-space: nowrap;">
+                    <p style="display: inline;">Office Name:</p>
+                    <h4 style="display: inline;">{{ $office->name }}</h4>
+                </div>
             </div>
-            <div class="dropdown" id="dropdown-{{ $office->location_id }}">
-                <ul class="dropdown-menu">
-                    @foreach($offices as $other_office)
-                        @if($other_office->id != $office->id)
-                            <li data-office-id="{{ $other_office->id }}">{{ $other_office->name }}</li>
-                        @endif
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    </div>
-    @endforeach
+            @endforeach
         </div>
         <div class="text-f2">
             <p> CLICK THE ROOM YOU WANT TO CHANGE OFFICES</p>
