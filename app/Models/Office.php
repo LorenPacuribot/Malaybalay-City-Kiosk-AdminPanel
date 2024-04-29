@@ -49,5 +49,29 @@ class Office extends Model
             return $this->location()->value('name');
         }
     }
+
+
+    public static function boot()
+    {
+        parent::boot();
+
+         // Listen for the created event on the Office model
+        static::created(function ($office) {
+        // Create a new record in the OfficeLocationPivot table
+        OfficeLocationPivot::create([
+            'office_id' => $office->id,
+            'location_id' => $office->location_id,
+        ]);
+         });
+
+        // Listen for the saved event on the Office model
+        static::saved(function ($office) {
+            // Update the location_id in OfficeLocationPivot records
+            OfficeLocationPivot::where('office_id', $office->id)
+                ->update(['location_id' => $office->location_id]);
+        });
+    }
+
+
+
 }
- 

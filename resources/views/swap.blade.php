@@ -45,36 +45,69 @@
 
     <div>
         <div class="text-f1">
-            <p> CLICK THE ROOM YOU WANT TO CHANGE OFFICES</p>
-            @foreach($offices as $office)
-            <div id="content-1{{ $office->location_id }}" class="hidden content">
-                <div style="white-space: nowrap;">
-                    <p style="display: inline;">Room Number:</p>
-                    <h4 style="display: inline;">{{ $office->location_id }}</h4>
+            <p>CLICK THE ROOM YOU WANT TO CHANGE OFFICES</p>
+            @foreach($offices->groupBy('location_id') as $locationId => $officesByLocation)
+                <div id="content-1{{ $locationId }}" class="hidden content">
+                    @foreach($officesByLocation as $office)
+                        <div style="white-space: nowrap;">
+                            <p style="display: inline;">Room Number:</p>
+                            <h4 style="display: inline;">{{ $office->location_id }}</h4>
+                        </div>
+                        <div style="white-space: nowrap;">
+                            <p style="display: inline;">Office Name:</p>
+                            <h4 style="display: inline;">{{ App\Models\Office::find($office->office_id)->name }}</h4>
+                        </div>
+
+
+                        <div class="dropdown">
+                            <button class="dropbtn">Change Office</button>
+                            <div class="dropdown-content">
+                                @foreach($offices as $other_office)
+                                    @if($other_office->id != $office->id)
+                                        <a  data-location-id="{{ $office->location_id }}" data-office-id="{{ $other_office->id }}">{{ App\Models\Office::find($other_office->id)->name }}</a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-                <div style="white-space: nowrap;">
-                    <p style="display: inline;">Office Name:</p>
-                    <h4 style="display: inline;">{{ $office->name }}</h4>
-                </div>
-            </div>
             @endforeach
+
+            </div>
+
         </div>
         <div class="text-f2">
-            <p> CLICK THE ROOM YOU WANT TO CHANGE OFFICES</p>
-            @foreach($offices as $office)
-            <div id="content-2{{ $office->location_id }}" class="hidden content">
-                <div style="white-space: nowrap;">
-                    <p style="display: inline;">Room Number:</p>
-                    <h4 style="display: inline;">{{ $office->location_id }}</h4>
+            <p>CLICK THE ROOM YOU WANT TO CHANGE OFFICES</p>
+            @foreach($offices->groupBy('location_id') as $locationId => $officesByLocation)
+                <div id="content-2{{ $locationId }}" class="hidden content">
+                    @foreach($officesByLocation as $office)
+                        <div style="white-space: nowrap;">
+                            <p style="display: inline;">Room Number:</p>
+                            <h4 style="display: inline;">{{ $office->location_id }}</h4>
+                        </div>
+                        <div style="white-space: nowrap;">
+                            <p style="display: inline;">Office Name:</p>
+                            <h4 style="display: inline;">{{ App\Models\Office::find($office->office_id)->name }}</h4>
+                        </div>
+
+
+                        <div class="dropdown">
+                            <button class="dropbtn">Change Office</button>
+                            <div class="dropdown-content">
+                                @foreach($offices as $other_office)
+                                    @if($other_office->id != $office->id)
+                                        <a data-location-id="{{ $office->location_id }}" data-office-id="{{ $other_office->id }}">{{ App\Models\Office::find($other_office->id )->name }}</a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-                <div style="white-space: nowrap;">
-                    <p style="display: inline;">Office Name:</p>
-                    <h4 style="display: inline;">{{ $office->name }}</h4>
-                </div>
-            </div>
             @endforeach
+
+            </div>
+
         </div>
-    </div>
 
 
 
@@ -158,7 +191,6 @@
             });
         });
     </script>
-
 
 </body>
 

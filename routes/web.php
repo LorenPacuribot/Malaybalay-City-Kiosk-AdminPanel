@@ -40,6 +40,8 @@ Route::get('/services/download/{id}',[PrintServicesController::class,'downloadse
 
 Route::get('/offices/swap', [RoomExchangeController::class, 'showRooms'])->name('swap.offices');
 
+Route::put('/update-office-name/{id}', [RoomExchangeController::class, 'updateOfficeName']);
+
 
 
 

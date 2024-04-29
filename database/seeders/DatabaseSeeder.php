@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
 
             LocationSeeder::class,
             OfficeSeeder::class,
+            OfficeLocationSeeder::class,
+
             ]);
     }
 }

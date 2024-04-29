@@ -18,9 +18,7 @@ class ListOffices extends ListRecords
             Actions\ButtonAction::make()
             ->url(fn()=> route('download.offices'))
             ->openUrlInNewTab(),
-            Actions\SwapAction::make()
-            ->url(fn()=> route('swap.offices'))
-            ->openUrlInNewTab(),
+           
 
         ];
     }
