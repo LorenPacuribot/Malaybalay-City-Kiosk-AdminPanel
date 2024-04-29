@@ -1,3 +1,26 @@
+.update-button {
+    background-color: #138164;
+    color: rgb(255, 255, 255);
+    padding: 10px 30px;
+    font-size: 16px;
+    border: none;
+    margin: 10px 15px;
+    border-radius: 4px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.text-info {
+    display: none;
+}
+
+/* Highlight style */
+.highlighted {
+filter: hue-rotate(260deg) saturate(200%) brightness(120%);
+}
 .dropbtn {
     background-color: #2D9FE0;
     color: rgb(255, 255, 255);
@@ -5,7 +28,7 @@
     font-size: 16px;
     border: none;
     margin: 10px 0px;
-    z-index: 99;
+    border-radius: 4px;
   }
 
   .dropdown {
