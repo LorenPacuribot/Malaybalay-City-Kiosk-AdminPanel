@@ -1,111 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    @vite('resources/js/app.js')
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malaybalay City</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+@extends('layouts.app')
 
-
-    <style>
-        body {
-
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            height: 100vh;
-            margin: 0;
-            background-attachment: fixed;
-            overflow-x: hidden;
-        }
-        .dropbtn {
-    background-color: #2D9FE0;
-    color: rgb(255, 255, 255);
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    margin: 10px 0px;
-    z-index: 99;
-  }
-
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 450px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    max-height: 150px; /* Set a fixed height */
-    overflow-y: auto; /* Add vertical scrollbar */
-  }
-
-  .dropdown-content a {
-    color: black;
-    padding: 10px 10px;
-    text-decoration: none;
-    display: block;
-  }
-
-  .dropdown-content a:hover {background-color: #ddd;}
-
-  .dropdown:hover .dropdown-content {display: block;}
-
-  .dropdown:hover .dropbtn {background-color: #2E4B66;}
-h4{
-    font-family: Arial, sans-serif;
-    text-align: left;
-    font-weight: normal;
-    font-size: 15px;
-}
-    </style>
-</head>
-<body>
-    <div>
-        <p>CLICK THE ROOM YOU WANT TO CHANGE OFFICES</p>
-        <div style="white-space: nowrap;">
-            <p style="display: inline;">Room Number:</p>
-            <h4 style="display: inline;">1</h4>
+@section('content')
+<div class="container">
+    <h1>Room Exchange</h1>
+    @foreach($rooms as $room)
+    <div class="room-container">
+        <h2>Room Number: {{ $room->location_id }}</h2>
+        <p>Office Name: {{ $room->office->name }}</p>
+        <div class="btn-group">
+            <button class="btn btn-primary change-btn" data-room="{{ $room->location_id }}">Change</button>
+            <button class="btn btn-success update-btn" data-room="{{ $room->location_id }}">Update</button>
         </div>
-        <div style="white-space: nowrap;">
-            <p style="display: inline;">Office Name:</p>
-            <!-- Update this line to include an ID -->
-            <h4 id="selected-office" style="display: inline;">1</h4>
-        </div>
+    </div>
+    @endforeach
+</div>
 
-        <div class="dropdown">
-            <button class="dropbtn">Change Office</button>
-            <div class="dropdown-content">
-                <!-- Hardcoded dropdown items for testing -->
-                <a class="office-item" data-location-id="1" data-office-id="101">Office 101</a>
-                <a class="office-item" data-location-id="1" data-office-id="102">Office 102</a>
-                <a class="office-item" data-location-id="1" data-office-id="103">Office 103</a>
+<!-- Modal for change office -->
+<div class="modal fade" id="changeOfficeModal" tabindex="-1" aria-labelledby="changeOfficeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changeOfficeModalLabel">Change Office</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="changeOfficeForm">
+                    <div class="mb-3">
+                        <label for="officeSelect" class="form-label">Select Office:</label>
+                        <select class="form-select" id="officeSelect" name="office_id">
+                            @foreach($offices as $office)
+                            <option value="{{ $office->id }}">{{ $office->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary save-change-btn">Save Changes</button>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- JavaScript to handle dropdown item selection -->
-    <script>
-        // Get all office items
-        const officeItems = document.querySelectorAll('.office-item');
+<!-- Modal for update office -->
+<div class="modal fade" id="updateOfficeModal" tabindex="-1" aria-labelledby="updateOfficeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateOfficeModalLabel">Update Office</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to update the office?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary confirm-update-btn">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-        // Loop through each office item and add event listener
-        officeItems.forEach(item => {
-            item.addEventListener('click', () => {
-                // Get the office name from the clicked item
-                const officeName = item.textContent;
+@endsection
 
-                // Update the content of the <h4> element with the retrieved office name
-                document.getElementById('selected-office').textContent = officeName;
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        // Change Office Button
+        $(".change-btn").click(function() {
+            var roomId = $(this).data("room");
+            $("#changeOfficeModal").modal("show");
+            // Store the room id in a hidden input field inside the modal form
+            $("#changeOfficeForm").append('<input type="hidden" name="location_id" value="' + roomId + '">');
+        });
+
+        // Save Change Button
+        $(".save-change-btn").click(function() {
+            // Perform AJAX request to update the office for the room
+            var locationId = $("input[name=location_id]").val();
+            var newOfficeId = $("#officeSelect").val();
+            $.ajax({
+                type: "POST",
+                url: "{{ route('office.update') }}",
+                data: {
+                    location_id: locationId,
+                    office_id: newOfficeId,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    // Reload the page after successful update
+                    window.location.reload();
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
             });
         });
-    </script>
-</body>
 
-</html>
+        // Update Button
+        $(".update-btn").click(function() {
+            $("#updateOfficeModal").modal("show");
+        });
+
+        // Confirm Update Button
+        $(".confirm-update-btn").click(function() {
+            // Perform AJAX request to update the office for the room
+            var locationId = $(this).data("room");
+            var newOfficeId = $("#officeSelect").val();
+            $.ajax({
+                type: "POST",
+                url: "{{ route('office.update') }}",
+                data: {
+                    location_id: locationId,
+                    office_id: newOfficeId,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    // Reload the page after successful update
+                    window.location.reload();
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+@endsection

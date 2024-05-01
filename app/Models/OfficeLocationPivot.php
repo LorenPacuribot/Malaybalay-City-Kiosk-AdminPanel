@@ -9,6 +9,8 @@ class OfficeLocationPivot extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $table = 'office_location_pivots';
     protected $fillable = [
         'location_id',

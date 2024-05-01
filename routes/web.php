@@ -41,11 +41,9 @@ Route::get('/offices/download/{id}', [PDFController::class,'downloadoffice'])->n
 Route::get('/services/download', [PrintServicesController::class,'downloadpdf'])->name('download.services');
 Route::get('/services/download/{id}', [PrintServicesController::class,'downloadservice'])->name('download.service');
 
-// Room exchange page route
+// Show the swap blade file
 Route::get('/offices/swap', [RoomExchangeController::class, 'showRooms'])->name('swap.offices');
 
-// AJAX route to save office location data
-Route::post('/office/save-location', [RoomExchangeController::class, 'saveLocation'])->name('office.save-location');
 
 
 
