@@ -29,7 +29,7 @@ class ClientActionsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('ClientActions')
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')->wrap(),
             ])
             ->filters([
                 //

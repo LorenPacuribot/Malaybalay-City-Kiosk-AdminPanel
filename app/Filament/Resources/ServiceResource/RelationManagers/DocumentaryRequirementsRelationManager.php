@@ -19,11 +19,11 @@ class DocumentaryRequirementsRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\TextInput::make('documentary_requirement')
-                    ->required()
-                    ->maxLength(255),
+                    ->required(),
+
                 Forms\Components\TextInput::make('where_to_secure')
-                    ->required()
-                    ->maxLength(255),
+                    ->required(),
+
             ]);
     }
 
@@ -32,8 +32,8 @@ class DocumentaryRequirementsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('Documentary Requirements')
             ->columns([
-                Tables\Columns\TextColumn::make('documentary_requirement'),
-                Tables\Columns\TextColumn::make('where_to_secure'),
+                Tables\Columns\TextColumn::make('documentary_requirement')->wrap(),
+                Tables\Columns\TextColumn::make('where_to_secure')->wrap(),
             ])
             ->filters([
                 //

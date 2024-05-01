@@ -58,12 +58,12 @@ class AgencyActionsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('client_action_id')
                 ->getStateUsing(function ($record) {
                     return ClientAction::find($record->client_action_id)->name;
-                }),
-                Tables\Columns\TextColumn::make('agency_action'),
-                Tables\Columns\TextColumn::make('fees_to_be_paid'),
-                Tables\Columns\TextColumn::make('processing_time'),
-                Tables\Columns\TextColumn::make('person_in_charge'),
-                Tables\Columns\TextColumn::make('contact_number'),
+                })->wrap(),
+                Tables\Columns\TextColumn::make('agency_action')->wrap(),
+                Tables\Columns\TextColumn::make('fees_to_be_paid')->wrap(),
+                Tables\Columns\TextColumn::make('processing_time')->wrap(),
+                Tables\Columns\TextColumn::make('person_in_charge')->wrap(),
+                Tables\Columns\TextColumn::make('contact_number')->wrap(),
             ])
             ->filters([
                 //

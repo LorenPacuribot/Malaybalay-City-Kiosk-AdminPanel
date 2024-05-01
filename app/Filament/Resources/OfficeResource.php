@@ -62,6 +62,7 @@ class OfficeResource extends Resource
 
                 Tables\Columns\TextColumn::make('name')
                 ->label('Office Name')
+                ->wrap()
                 ->sortable()
                 ->searchable(),
                 Tables\Columns\TextColumn::make('location_id')

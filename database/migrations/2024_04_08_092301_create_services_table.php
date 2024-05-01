@@ -33,8 +33,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('service_id');
             //->constrained('services');
-            $table->string('documentary_requirement');
-            $table->string('where_to_secure');
+            $table->text('documentary_requirement');
+            $table->text('where_to_secure');
             $table->timestamps();
             $table->softDeletes();
         });

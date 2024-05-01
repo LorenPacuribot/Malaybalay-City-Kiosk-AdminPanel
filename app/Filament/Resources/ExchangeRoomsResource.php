@@ -75,6 +75,7 @@ class ExchangeRoomsResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->badge()
+                    ->wrap()
                     ->color(fn (string $state): string => match ($state) {
                         default => 'success',
                     }),

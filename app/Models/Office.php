@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Livewire\Features\SupportPagination\HandlesPagination;
 
 class Office extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
+    use HandlesPagination;
 
     protected $table = 'offices';
     protected $fillable = [
