@@ -66,7 +66,7 @@ class OfficeResource extends Resource
                 ->searchable(),
                 Tables\Columns\TextColumn::make('location_id')
                 ->label('Location')
-                //->toggleable(isToggledHiddenByDefault: true)
+                ->toggleable(isToggledHiddenByDefault: true)
                 ->getStateUsing(function ($record) {
                     return Location::find($record->location_id)->name;
                 })

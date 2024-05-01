@@ -82,9 +82,12 @@ class ServiceResource extends Resource
                 ->getStateUsing(function ($record) {
                     return Office::find($record->office_id)->name;
                 })
+                ->toggleable(isToggledHiddenByDefault: true)
+                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Service Name')
+                    ->wrap()
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('office_and_division')

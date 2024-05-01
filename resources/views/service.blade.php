@@ -139,8 +139,8 @@
 
 @foreach($services as $service)
 <img src="images/city.png" alt="Logo" class="logo">
-    <h2>{{ $office->name }}</h2>
-    <h4>{{ $office->office_hour }}</h4>
+    <h2> {{ App\Models\Office::find ($service->office_id)->name }}</h2>
+    <h4>{{ App\Models\Office::find ($service->office_id)->office_hour }}</h4>
     <h4>except on holidays</h4>
     <br>
     <br>

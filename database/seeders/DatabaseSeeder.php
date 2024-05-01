@@ -20,12 +20,17 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
+        User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+        ]);
+
         $this->call([
 
             LocationSeeder::class,
             OfficeSeeder::class,
             OfficeLocationSeeder::class,
-
+            ServiceSeeder::class,
             ]);
     }
 }

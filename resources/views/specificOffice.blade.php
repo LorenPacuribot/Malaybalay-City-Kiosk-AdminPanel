@@ -89,27 +89,10 @@
 <body>
     <img src="images/city.png" alt="Logo" class="logo">
     <h1>{{ $office->name }}</h1>
+    <br>
+        <p>{{ $office->location_name }}</p>
+        <p>{{ $office->office_hour }}</p>
+        <p>{{ $office->contact_information }}</p>
 
-
-    <table>
-        <thead>
-            <tr>
-
-                <th>Location</th>
-                <th>Office Hour</th>
-                <th>Contact Information</th>
-            </tr>
-        </thead>
-        <tbody>
-
-                <tr>
-
-                    <td class="box">{{ $office->location_name }}</td> <!-- Check if location exists -->
-                    <td class="box">{{ $office->office_hour }}</td>
-                    <td class="box">{{ $office->contact_information }}</td>
-                </tr>
-
-        </tbody>
-    </table>
 </body>
 </html>
