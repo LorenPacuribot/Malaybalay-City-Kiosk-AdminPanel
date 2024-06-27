@@ -5,7 +5,7 @@ namespace App\Filament\Resources\ExchangeRoomsResource\Pages;
 use App\Filament\Resources\ExchangeRoomsResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
-
+use App\Packages\SwapAction;
 class ListExchangeRooms extends ListRecords
 {
     protected static string $resource = ExchangeRoomsResource::class;
@@ -14,7 +14,7 @@ class ListExchangeRooms extends ListRecords
     {
         return [
           //  Actions\CreateAction::make(),
-            Actions\SwapAction::make()
+            SwapAction::make()
             ->url(fn()=> route('swap.offices'))
             ->openUrlInNewTab(),
         ];

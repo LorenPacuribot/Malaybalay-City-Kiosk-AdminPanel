@@ -36,8 +36,7 @@
 
     <div>
         <div class="text-f1">
-            <p class="dropbtn" >FIRST FLOOR</p>
-            <p>CLICK THE ROOM YOU WANT TO VIEW THE OFFICE NAME</p>
+            <p>CLICK THE ROOM YOU WANT TO CHANGE OFFICES</p>
             @foreach($offices->groupBy('location_id') as $locationId => $officesByLocation)
                 <div id="content-1{{ $locationId }}" class="hidden content">
                     @foreach($officesByLocation as $office)
@@ -47,17 +46,48 @@
                         </div>
                         <div style="white-space: nowrap;">
                             <p style="display: inline;">Office Name:</p>
-                            <span class="office-id" data-location-id="{{ $office->location_id }}" data-office-id="{{ $office->office_id }}">{{ App\Models\Office::find($office->office_id)->name }}</span>
+                            <span class="office-id" data-location-id="{{ $office->location_id }}" data-office-id="{{ $office->office_id }}">{{ $office->office_id }}</span>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">Change Office</button>
+                            <div class="dropdown-content">
+                                @foreach($offices as $other_office)
+                                    @if($other_office->id != $office->id)
+                                        <a data-location-id="{{ $office->location_id }}" data-office-id="{{ $other_office->id }}">{{ $other_office->id }}</a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="update-button" data-toggle="modal" data-target="#exampleModal">Update</button>
                         </div>
                     @endforeach
                 </div>
             @endforeach
         </div>
 
-
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Hey!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Are you sure you want to re-assign the  office to a different room?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
         <div class="text-f2">
-            <p class="dropbtn" >SECOND FLOOR</p>
-            <p>CLICK THE ROOM YOU WANT TO VIEW THE OFFICE NAME</p>
+            <p>CLICK THE ROOM YOU WANT TO CHANGE OFFICES</p>
             @foreach($offices->groupBy('location_id') as $locationId => $officesByLocation)
                 <div id="content-2{{ $locationId }}" class="hidden content">
                     @foreach($officesByLocation as $office)
@@ -69,11 +99,118 @@
                             <p style="display: inline;">Office Name:</p>
                             <span class="office-id" data-location-id="{{ $office->location_id }}" data-office-id="{{ $office->office_id }}">{{ App\Models\Office::find($office->office_id)->name }}</span>
                         </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">Change Office</button>
+                            <div class="dropdown-content">
+                                @foreach($offices as $other_office)
+                                    @if($other_office->id != $office->id)
+                                        <a data-location-id="{{ $office->location_id }}" data-office-id="{{ $other_office->id }}">{{ App\Models\Office::find($other_office->id)->name }}</a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="update-button" data-toggle="modal" data-target="#exampleModal">Update</button>
+                        </div>
                     @endforeach
                 </div>
             @endforeach
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var dropdownButtonsF1 = document.querySelectorAll('.text-f1 .dropdown .dropbtn');
+            var dropdownButtonsF2 = document.querySelectorAll('.text-f2 .dropdown .dropbtn');
+
+            function updateButtons(buttonsToUpdate, newOfficeId) {
+                buttonsToUpdate.forEach(function(button) {
+                    var dropdownContent = button.nextElementSibling; // Get the dropdown content associated with this button
+                    var officeIdElement = dropdownContent.closest('.content').querySelector('.office-id');
+
+                    // Update the displayed office ID for the clicked button
+                    officeIdElement.textContent = newOfficeId;
+                    officeIdElement.setAttribute('data-office-id', newOfficeId);
+                });
+            }
+
+            function syncButtons(buttonsToUpdate, newOfficeId) {
+                updateButtons(buttonsToUpdate, newOfficeId);
+            }
+
+            dropdownButtonsF1.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var dropdownContent = this.nextElementSibling; // Get the dropdown content associated with this button
+                    var locationId = dropdownContent.getAttribute('data-location-id');
+                    var dropdownOptions = dropdownContent.querySelectorAll('a');
+
+                    dropdownOptions.forEach(function(option) {
+                        option.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            var newOfficeId = this.getAttribute('data-office-id');
+
+                            // Update buttons in text-f1 and text-f2 sections
+                            syncButtons(dropdownButtonsF1, newOfficeId);
+                            syncButtons(dropdownButtonsF2, newOfficeId);
+                        });
+                    });
+                });
+            });
+
+            dropdownButtonsF2.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var dropdownContent = this.nextElementSibling; // Get the dropdown content associated with this button
+                    var locationId = dropdownContent.getAttribute('data-location-id');
+                    var dropdownOptions = dropdownContent.querySelectorAll('a');
+
+                    dropdownOptions.forEach(function(option) {
+                        option.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            var newOfficeId = this.getAttribute('data-office-id');
+
+                            // Update buttons in text-f1 and text-f2 sections
+                            syncButtons(dropdownButtonsF1, newOfficeId);
+                            syncButtons(dropdownButtonsF2, newOfficeId);
+                        });
+                    });
+                });
+            });
+        });
+    </script>
+<script>
+    // Event listener for "Save changes" button in modal
+    $(document).ready(function() {
+        $('.save-changes-btn').click(function() {
+            var locationId = $(this).data('location-id');
+            var newOfficeId = $(this).data('new-office-id');
+
+            // AJAX request to save office location
+            $.ajax({
+                url: '/office/save-location',
+                type: 'POST',
+                data: {
+                    location_id: locationId,
+                    office_id: newOfficeId
+                },
+                success: function(response) {
+                    console.log(response.message);
+                    // You can perform additional actions here if needed
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    // You can perform additional error handling here if needed
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
+
+
 
     <div class="small">
         <div class="center">

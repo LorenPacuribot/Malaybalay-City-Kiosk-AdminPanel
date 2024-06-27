@@ -18,8 +18,8 @@ use App\Filament\Resources\OfficeResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use App\Filament\Resources\OfficeResource\RelationManagers;
-use App\Filament\Actions\BulkPrintAction;
 
+use App\Packages\PrintAction;
 
 class OfficeResource extends Resource
 {
@@ -105,7 +105,7 @@ class OfficeResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
-                Tables\Actions\PrintAction::make()
+                PrintAction::make()
                 ->url(fn ($record) => route('download.office', $record->getKey()))
                 ->openUrlInNewTab(),
 

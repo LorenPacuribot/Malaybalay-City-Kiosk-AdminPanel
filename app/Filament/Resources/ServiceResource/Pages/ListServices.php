@@ -5,7 +5,7 @@ namespace App\Filament\Resources\ServiceResource\Pages;
 use App\Filament\Resources\ServiceResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
-
+use App\Packages\BulkPrintAction;
 class ListServices extends ListRecords
 {
     protected static string $resource = ServiceResource::class;
@@ -14,7 +14,7 @@ class ListServices extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
-            Actions\ButtonAction::make()
+            BulkPrintAction::make()
             ->url(fn()=> route('download.services'))
             ->openUrlInNewTab(),
 

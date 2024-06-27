@@ -37,15 +37,16 @@ class ExchangeRoomsResource extends Resource
     {
         return $form
             ->schema([
-                    Select::make('location_id')
-                        ->label('Location')
-                        ->options(Location::all()->pluck('name', 'id'))
-                        ->preload()
-                        ->required(),
+
                     Select::make('office_id')
                         ->label('Office')
                         ->options(Office::all()->pluck('name', 'id'))
                         ->disabled()
+                        ->required(),
+                    Select::make('location_id')
+                        ->label('Location')
+                        ->options(Location::all()->pluck('name', 'id'))
+                        ->preload()
                         ->required(),
 
             ]);

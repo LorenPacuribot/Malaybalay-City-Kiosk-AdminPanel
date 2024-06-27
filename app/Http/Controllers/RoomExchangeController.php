@@ -20,12 +20,12 @@ class RoomExchangeController extends Controller
         $offices = OfficeLocationPivot::all();
 
         // Pass the office data to the blade file
-        return view('swap', [
+        return view('swapcopy', [
             'offices' => $offices
         ]);
     }
 
-    
+
 
 
 }
